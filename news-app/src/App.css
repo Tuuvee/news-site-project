@@ -6,6 +6,7 @@ html {
 p {
 	color:#d8e1e3;
 	text-shadow: 1px 1px 1px #bed0d4;
+	
 }
 p.imageCredit{
 	font-size:1vh;
@@ -88,8 +89,12 @@ img{
 /*Content CSS END*/
 /*Article CSS*/
 .article{
-	
 	border-bottom:3px solid #c1cfd2;
+	
+}
+.article:hover{
+	background: #868f91;
+	cursor:pointer;
 }
 .article *{
 	margin-left:2%;

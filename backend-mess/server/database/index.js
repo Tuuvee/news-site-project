@@ -21,6 +21,18 @@ articledb.all=()=>{
 		});
 	});
 };
+
+articledb.recent=(value)=>{
+	return new Promise((resolve, reject)=>{
+		pool.query('SELECT * FROM articles ORDER BY Date DESC LIMIT ?', [value], (error, results)=>{
+		if (error){
+			return reject(error);
+		}
+		return resolve(results);
+		});
+	});
+};
+
 articledb.one=(id)=>{
 	return new Promise((resolve, reject)=>{
 	pool.query('SELECT * FROM articles WHERE id = ?', [id], (error, results)=>{

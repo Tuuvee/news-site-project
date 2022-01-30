@@ -1,30 +1,43 @@
 import React from 'react';
 import Article from './ArticleDisplay';
-const API_URL='/api/articles/';
+import {isMobile} from "react-device-detect";
+const API_URL='/api/articles/10';
 
+let maxArticles = 1;
 
 class Articles extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			dataArray : []
+			dataArray : [],
+			dataArrayLeft : [],
+			dataArrayRight : []
 			
 		}
 		
 	}
 	
-componentDidMount(){
+apiCall(){
 	fetch(API_URL)
 	.then(response => response.json())
 	.then(data=>{ 
 	let array = data;
-	this.setState({dataArray : array})
 	console.log(array)
+	let arrayLeft = [];
+	let arrayRight = [];
+	array.forEach((value, index) => {index % 2 === 0 ?  arrayLeft.push(value) : arrayRight.push(value)});
+	
+	
+	this.setState({dataArray : array})
+	this.setState({dataArrayLeft : arrayLeft})
+	this.setState({dataArrayRight : arrayRight})
+	
 	});
 }
-apiCall(){
-	
+componentDidMount(){
+	this.apiCall();
 }
+
 	
 	
 	
@@ -32,13 +45,8 @@ apiCall(){
 render(){
 		return(
 		<>
-		<div className="articleColumnLeft">
-			<Article articleData={this.state.dataArray}/>
-		</div>
 		
-		<div className="articleColumnRight">
-			
-		</div>
+		{isMobile ? <div className="articleColumnMobile"><Article articleData={this.state.dataArray} /></div> : <><div className="articleColumnLeft"><Article articleData={this.state.dataArrayLeft} /></div><div className="articleColumnLeft"><Article articleData={this.state.dataArrayRight} /></div> </>}
 		</>
 		);
 		
