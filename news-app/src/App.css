@@ -6,7 +6,9 @@ html {
 p {
 	color:#d8e1e3;
 	text-shadow: 1px 1px 1px #bed0d4;
-	
+}
+a {
+	text-decoration:none;
 }
 p.imageCredit{
 	font-size:1vh;

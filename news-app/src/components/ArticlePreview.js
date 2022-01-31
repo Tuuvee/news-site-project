@@ -1,9 +1,9 @@
 import React from 'react';
 import Article from './ArticleDisplay';
 import {isMobile} from "react-device-detect";
-const API_URL='/api/articles/10';
+const API_URL='/api/articles/';
 
-let maxArticles = 1;
+let maxArticles = 10;
 
 class Articles extends React.Component{
 	constructor(){
@@ -18,7 +18,7 @@ class Articles extends React.Component{
 	}
 	
 apiCall(){
-	fetch(API_URL)
+	fetch(API_URL+maxArticles)
 	.then(response => response.json())
 	.then(data=>{ 
 	let array = data;
