@@ -2,11 +2,6 @@ import React, {useState} from 'react';
 import { useParams } from 'react-router-dom'
 const API_URL='/api/articles/article/';
 
-
-function apiCall(id){
-	
-}
-
 function ArticleRender() {
 	
 const [storedData, setStoredData] = useState({}); 
@@ -17,6 +12,13 @@ React.useEffect(() => {
 	.then(response => response.json())
 	.then(data=>{ 
 	let array = data;
+	let string=array.Date;
+	let date = '';
+	let time = '';
+	date = string.slice(0,10);
+	time = string.slice(11,16);
+	array.Date=date+' '+time;
+	
 	console.log(array)
 	setStoredData(array);
 	});
