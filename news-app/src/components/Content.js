@@ -3,8 +3,7 @@ import Article from './ArticleRender';
 import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
 function Content() {
   return (
-    <div className="content">
-		<div className="column"></div>
+    
 			<Router>
 				<Routes>
 					<Route path="/" element={<ArticlePreview />} 
@@ -13,9 +12,7 @@ function Content() {
 					/>
 				</Routes>
 			</Router>
-		<div className="column"></div>
 		
-    </div>
   );
 }
 
