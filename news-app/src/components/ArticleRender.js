@@ -12,6 +12,8 @@ React.useEffect(() => {
 	.then(response => response.json())
 	.then(data=>{ 
 	let array = data;
+	
+	//unnecessarily large code to slice the date to make it look pretty
 	let string=array.Date;
 	let date = '';
 	let time = '';
@@ -30,15 +32,16 @@ React.useEffect(() => {
 
 
 	return (
-	<div>
-   
-   <h2> {storedData.Title}</h2>
-   {storedData.ImageURL === null ? null : <><img src={storedData.ImageURL} alt={'Image, Credit to: '+ storedData.ImageCredit}/><p className="imageCredit">Image credit to: {storedData.ImageCredit}</p></>}
-   <p>{'Posted: '+storedData.Date}</p>
-   <p>{'Article By: '+storedData.Author}</p>
-   <hr/>
-   <p>{storedData.Content}</p>
-   
+	<div className="articleFull">
+	<h2> {storedData.Title}</h2>
+		{storedData.ImageURL === null ? null : <><img src={storedData.ImageURL} width="65%"alt={'Image, Credit to: '+ storedData.ImageCredit}/><p className="imageCredit">Image credit to: {storedData.ImageCredit}</p></>}
+		<div className="rowSmall">
+		<p>{'Article By: '+storedData.Author}</p>
+		
+		<p>{'Posted: '+storedData.Date}</p>
+		</div>
+		<hr/>
+		<p>{storedData.Content}</p>
    </div>
   );
 }
